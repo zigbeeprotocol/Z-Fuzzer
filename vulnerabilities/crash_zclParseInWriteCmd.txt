@@ -1,0 +1,4 @@
+When sending a malformed ZCL message with commandID setting to Write Attributes No Response, the device fails to update the specific attribute.
+
+Original Crash ZCL Message for function zclParseInWriteCmd:
+00 01 05 00 00 0a 78 13 a8 fb 8f 44 d3 14 e6 f1 b1 5a 3a a1 68 45 fe 10 f5 cb 2f a3 61 00 5d 6c

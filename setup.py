@@ -1,0 +1,30 @@
+from setuptools import setup
+
+setup(
+    name='zfuzzer',
+    version='0.1',
+    packages=['boofuzz', 'boofuzz.web', 'boofuzz.legos', 'boofuzz.blocks', 'boofuzz.pgraph',
+              'boofuzz.primitives'],
+    url='https://github.com/zigbeeprotocol/Z-Fuzzer',
+    license='GPL',
+    author='angela-ren',
+    author_email='mengfei.ren@mavs.uta.edu',
+    description='A practical fuzzing platform for Zigbee protocol implementations',
+    install_requires=[
+        "attrs",
+        "backports.shutil_get_terminal_size",
+        "click",
+        "colorama",
+        "crc32c",
+        "Flask",
+        "future",
+        "impacket",
+        "ldap3==2.5.1",
+        "psutil",
+        "pyserial",
+        "pydot",
+        "six",
+        "tornado~=5.0",
+    ],
+    python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
+)

@@ -1,0 +1,85 @@
+
+__var _fileHandle;
+__var _interruptID;
+__var _breakID;
+__var _dataLength;
+
+execUserSetup()
+{
+  __message "execUserSetup() called\n";
+
+  /* Call the simulation setup. */
+  SimulationSetup ();
+}
+
+
+execUserReset()
+{
+  __message "execUserReset() called\n";
+  if( _fileHandle )
+  {
+    __resetFile( _fileHandle );
+  }
+}
+
+
+execUserExit()
+{
+  __message "execUserExit() called\n";
+  
+  __message "Test zclProcessMessageMSG.\n";
+}
+
+
+SimulationSetup()
+{
+  /* Open the text file for ASCII reading. */
+  /* Put in the appropriate path to the seedfile file */
+  _fileHandle = __openFile( "F:\\Workspace\\Z-Fuzzer\\zstack_iar\\seedfile", "r" );
+  if( !_fileHandle )
+  {
+	__message "ERROR: could not open file" ;
+  }
+  
+  _interruptID = __orderInterrupt("INT_UART1", 100000, 600000, 0, 1, 0, 100);
+  if( -1 == _interruptID )
+  {
+    __message "ERROR: failed to set up the interrupt";
+  }
+
+  /* Set up the immediate breakpoint. */
+  _breakID = __setSimBreak( "UART_BASE", "R", "Access()" );
+  if( !_breakID )
+  {
+    __message "ERROR: could not set immediate breakpoint.\n" ;
+  } 
+  
+}
+
+
+Access()
+{
+  //__message "Access() called\n";
+
+  __var _seedData;
+  if( 0 == __readFile(_fileHandle, &_seedData) )
+  {
+    UART_BASE = _seedData;
+	_dataLength++;
+	//__message "SBUF = 0x", _seedData:%X,"\n";
+  }
+  else
+  {
+	UART_BASE = _dataLength;
+	//__message "Error reading value from file.";
+	SimulationShutdown();
+  }
+}
+
+
+SimulationShutdown()
+{
+  __cancelInterrupt(_interruptID);
+  __clearBreak(_breakID);
+  __closeFile(_fileHandle);
+}

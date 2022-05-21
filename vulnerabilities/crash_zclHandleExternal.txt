@@ -1,0 +1,4 @@
+When sending a malformed ZCL message with commandID setting to Read Reporting Configuration Response message, the end device is freezing and failed to respond to any operation.
+
+The malformed message is shown as the following in binary:
+08 01 09 8b 00 00 00 22 00 00 00 00 e9 eb a7 7b e3 9d 90 dc af 47 07 35 5e d0 f2 c6 0d 09 80 95 d9 9f ba 56 78 6e bc cb b6 94 95 dc da e8 20 13 68 25 98 a2 ce b5 52 44 95 82 f9 8f 27 ca 25 58 f4 e4 a3 12 3e cc

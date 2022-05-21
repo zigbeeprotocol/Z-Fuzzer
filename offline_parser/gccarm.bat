@@ -1,0 +1,1 @@
+"C:\Users\zfuzzer\zfuzzer\gnuarm\bin\arm-none-eabi-gcc.exe" "C:\Users\zfuzzer\zfuzzer\Z-Fuzzer\zstack_iar\Components\stack\zcl\zcl.c" -c -o "C:\Users\zfuzzer\zfuzzer\Z-Fuzzer\offline_parser\zcl.o" @"C:\Users\zfuzzer\zfuzzer\Z-Fuzzer\offline_parser\gccarm_extra_compile.cfg" -fdump-tree-cfg-lineno

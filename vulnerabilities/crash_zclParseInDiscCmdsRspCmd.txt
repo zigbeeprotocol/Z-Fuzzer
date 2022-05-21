@@ -1,0 +1,15 @@
+When the commandID in ZCL message is set to 0x12 or 0x14, which means a Discover Commands Received Response message or a Discover Commands Generated Response message, the messages with such ID will crash Z-Stack execution on the embedded device. The device is freezing and failed to respond to any operations.
+
+Sample ZCL message is shown in the following:
+\x00\x01\x12\x00\x00
+
+The simulator will return a memory crash error with call stack like this:
+Call Stack:
+
+  #0  PC: 0x201eae  in  zclParseInDiscCmdsRspCmd(0x20007F28)   at  XXXXX\Components\stack\zcl\zcl.c:4347
+
+  #1  PC: 0x200aae  in  zcl_ProcessMessageMSG(0x20007FAC)   at  XXXXX\Components\stack\zcl\zcl.c:2254
+
+  #2  PC: 0x203940  in  main()   at  XXXXX\ZMain\ZMain.c:121
+
+  #3  PC: 0x204f0a      [_call_main + 0xd]
