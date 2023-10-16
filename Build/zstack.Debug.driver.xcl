@@ -1,0 +1,17 @@
+"--endian=little" 
+
+"--cpu=Cortex-M3" 
+
+"--fpu=None" 
+
+"-p" 
+
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\arm\config\debugger\TexasInstruments\CC2538SF53.ddf" 
+
+"--semihosting" 
+
+"--multicore_nr_of_cores=1" 
+
+
+
+
